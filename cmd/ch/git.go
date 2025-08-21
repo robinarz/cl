@@ -25,12 +25,6 @@ func commit() error {
 		return fmt.Errorf("error getting worktree: %w", err)
 	}
 
-	fmt.Fprintln(os.Stderr, faintStyle.Render("\nStaging files..."))
-	_, err = worktree.Add(".")
-	if err != nil {
-		return fmt.Errorf("error staging files: %w", err)
-	}
-
 	status, err := worktree.Status()
 	if err != nil {
 		return fmt.Errorf("error getting status: %w", err)
